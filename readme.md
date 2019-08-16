@@ -4,7 +4,8 @@ Mongoose plugin that ensures array objects are unique by the specified object ke
 
 ## Purpose of this Mongoose plugin
 
-With this Mongoose plugin you can filter out duplicate array object elements in your schema while creating new documents making sure all objects in the array are unique by the object key you specify.
+With this Mongoose plugin you can filter out duplicate array objects in your model when **saving** new documents.
+You can specify the object key by which object uniqueness is checked.
 
 ## How to use
 
