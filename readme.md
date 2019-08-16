@@ -9,25 +9,25 @@ You can specify the object key by which object uniqueness is checked.
 
 ## How to use
 
-1. Install the module
+Install the module:
 
 ```
 yarn add mongoose-unique-array-objects
 ```
 
-2. Import plugin
+Import the plugin:
 
 ```
 import mongooseUniqueArrayObjectsPlugin from 'mongoose-unique-array-objects'
 ```
 
-3. Define your **array of objects** type in Mongoose schema and configure the **uniqueByKey** option object with the **keyName** value in your schema type definition:
+Define your **array of objects** type in the Mongoose schema and configure the **uniqueByKey** option object with the **keyName** value in your schema type definition. The plugin will check the uniqueness of the objects based on this key name:
 
 ```
 # schema type definition
 const mySchema = new Schema({
   mySchemaArrayType: {
-    uniqueByKey: { keyName: 'your_keyname' }
+    uniqueByKey: { keyName: 'lang' }
     type: [{
       lang: String
       value: String
@@ -36,10 +36,16 @@ const mySchema = new Schema({
 })
 ```
 
-4. Initialize the plugin
+In the example above only unique **lang** keys will be preserved. Other objects will be silently ignored and excluded from **save** operation.
+
+Load the plugin:
 
 ```
 mySchema.plugin(mongooseUniqueArrayObjectsPlugin)
 ```
 
 From now on array objects will be unique by the given key.
+
+## Our sponsor
+
+This module is sponsored by https://travelem.com - travel the World with travelem
