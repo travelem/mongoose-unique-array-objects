@@ -7,6 +7,8 @@ Mongoose plugin that ensures array objects are unique by the specified object ke
 With this Mongoose plugin you can filter out duplicate array objects in your model when **saving** documents.
 You can specify the object key by which object uniqueness is checked.
 
+This Mongoose plugin is invoked with the **save** hook only.
+
 ## How to use
 
 Install the module:
@@ -38,14 +40,14 @@ const mySchema = new Schema({
 
 In the example above only unique **lang** keys will be preserved. Other objects will be silently ignored and excluded from **save** operation.
 
-Load the plugin:
+Finally, load the plugin:
 
 ```
-mySchema.plugin(mongooseUniqueArrayObjectsPlugin)
+mySchema.plugin(uniqueArrayObjects)
 ```
 
-From now on array objects will be unique by the given key.
+From now on array objects will be unique by the given key and only unique objects will be stored in the **save** operation.
 
 ## Our sponsor
 
-This module is sponsored by https://travelem.com - travel the World with travelem
+This module is sponsored by https://travelem.com - travel the World with travelem.com
