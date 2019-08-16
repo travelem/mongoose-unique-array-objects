@@ -1,1 +1,1 @@
-export * from "./mongoose-unique-array-objects";
+export { uniqueArrayObjectsPlugin as default} from "./mongoose-unique-array-objects";
