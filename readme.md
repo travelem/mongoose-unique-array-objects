@@ -38,7 +38,7 @@ const mySchema = new Schema({
 })
 ```
 
-In the example above only unique **lang** keys will be preserved. Other objects will be silently ignored and excluded from **save** operation.
+In the example above only unique **lang** keys will be preserved. Other objects will be silently ignored and excluded from the **save** operation.
 
 Finally, load the plugin:
 
