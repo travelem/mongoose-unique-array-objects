@@ -29,21 +29,36 @@ Define your **array of objects** type in the Mongoose schema and configure the *
 # schema type definition
 const mySchema = new Schema({
   mySchemaArrayType: {
-    uniqueByKey: { keyName: 'lang' }
     type: [{
       lang: String
       value: String
-    }]
+    }],
+    uniqueByKey: { keyName: 'lang' }
   }
 })
 ```
 
 In the example above only unique **lang** keys will be preserved. Other objects will be silently ignored and excluded from the **save** operation.
 
+From version 1.0.0 upwards this plugin now also supports nested schemas, for example:
+
+```
+const mySchema = new Schema({
+  myNestedSchemaArrayType: {
+    nestedName: {
+      type: [{
+        lang: String
+        value: String
+      }],
+      uniqueByKey: { keyName: 'lang' }
+    }
+  }
+```
+
 Finally, load the plugin:
 
 ```
-mySchema.plugin(uniqueArrayObjects)
+mySchema.plugin(uniqueArrayObjectsPlugin)
 ```
 
 From now on array objects will be unique by the given key and only unique objects will be stored in the **save** operation.

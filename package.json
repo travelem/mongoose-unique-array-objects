@@ -1,8 +1,12 @@
 {
   "name": "mongoose-unique-array-objects",
   "private": false,
-  "version": "0.0.5",
-  "description": "Mongoose plugin that ensures array objects are unique by object key",
+  "auhor": {
+    "name": "travelem.com",
+    "url": "https://travelem.com"
+  },
+  "version": "1.0.1",
+  "description": "Mongoose plugin that ensures array objects are unique by the object key",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "repository": {
@@ -10,9 +14,11 @@
     "url": "git+https://github.com/travelem/mongoose-unique-array-objects.git"
   },
   "keywords": [
-    "travelem",
+    "array",
     "mongoose",
-    "plugin"
+    "objects",
+    "plugin",
+    "unique"
   ],
   "author": "travelem.com",
   "license": "MIT",
@@ -21,8 +27,8 @@
   },
   "homepage": "https://travelem.com",
   "dependencies": {
-    "lodash": "^4.17.15",
-    "mongoose": "^5.6.9"
+    "dot-prop": "^5.1.0",
+    "lodash": "^4.17.15"
   },
   "devDependencies": {
     "@types/lodash": "^4.14.136",

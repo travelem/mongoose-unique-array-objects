@@ -1,17 +1,19 @@
+import * as dotProp from 'dot-prop'
+
 import { Document, HookNextFunction, Schema, SchemaType, SchemaTypeOpts } from 'mongoose'
+import { isArray, uniqBy } from 'lodash'
 
-import { uniqBy } from 'lodash'
-
-/** Make path only contains unique keys*/
 export function uniqueArrayObjectsPlugin(schema: Schema) {
   schema.pre('save', function(next: HookNextFunction) {
     const doc = this as Document
-    schema.eachPath((pathName: string) => {
-      const pathData = schema.path(pathName) as SchemaType & {
-        options: SchemaTypeOpts<any> & { uniqueKeys: boolean }
-      }
-      if (pathData.options.uniqueByKey && pathData.options.uniqueByKey.keyName) {
-        doc[pathName] = uniqBy(doc[pathName], pathData.options.uniqueByKey.keyName)
+    schema.eachPath((pathName: string, type: SchemaType) => {
+      const schemaType = type as SchemaType & { options: SchemaTypeOpts<any> & { uniqueByKey: { keyName: string } } }
+      if (schemaType.options.uniqueByKey && schemaType.options.uniqueByKey.keyName) {
+        const value = dotProp.get(doc.toJSON(), pathName)
+        if (isArray(value)) {
+          const uniqueResults = uniqBy(value, schemaType.options.uniqueByKey.keyName)
+          dotProp.set(doc, pathName, uniqueResults)
+        }
       }
     })
     next()
