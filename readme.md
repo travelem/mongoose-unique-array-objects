@@ -20,7 +20,7 @@ yarn add mongoose-unique-array-objects
 Import the plugin:
 
 ```
-import uniqueArrayObjects from 'mongoose-unique-array-objects'
+import uniqueArrayObjectsPlugin from 'mongoose-unique-array-objects'
 ```
 
 Define your **array of objects** type in the Mongoose schema and configure the **uniqueByKey** option object with the **keyName** value in your schema type definition. The plugin will check the uniqueness of the objects based on this key name:
